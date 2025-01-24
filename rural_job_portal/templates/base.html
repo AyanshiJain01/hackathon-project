@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural Job Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        function changeLanguage(lang) {
+            // Store language preference in localStorage
+            localStorage.setItem('language', lang);
+            
+            // Reload the page to apply translations
+            location.reload();
+        }
+
+        // On page load, check and apply language
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('language') || 'en';
+            translatePage(savedLang);
+        });
+
+        function translatePage(lang) {
+            const translations = {
+                'en': {
+                    'home': 'Home',
+                    'post_job': 'Post Job',
+                    'my_jobs': 'My Jobs',
+                    'my_applications': 'My Applications',
+                    'logout': 'Logout',
+                    'login': 'Login',
+                    'register': 'Register',
+                    'copyright': '© 2024 Rural Job Portal. All rights reserved.'
+                    
+                },
+                'hi': {
+                    'home': 'होम',
+                    'post_job': 'नौकरी पोस्ट करें',
+                    'my_jobs': 'मेरी नौकरियां',
+                    'my_applications': 'मेरी आवेदन',
+                    'logout': 'लॉग आउट',
+                    'login': 'लॉगिन',
+                    'register': 'रजिस्टर',
+                    'copyright': '© 2024 ग्रामीण रोजगार पोर्टल। सभी अधिकार सुरक्षित।'
+                }
+            };
+
+            // Apply translations to elements
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-translate-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+        
+            document.querySelectorAll('[data-translate-label]').forEach(el => {
+                const key = el.getAttribute('data-translate-label');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            // Set language-specific attributes
+            document.documentElement.lang = lang;
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-screen">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <div class="flex justify-between items-center">
+                
+                <a href="{% url 'home' %}" class="flex items-center py-4">
+                    <span class="font-semibold text-gray-500 text-lg" data-translate="home">Home</span>
+                </a>
+
+                
+                <div class="flex items-center space-x-3">
+                    <!-- Language Switcher -->
+                    <div class="mr-4">
+                        <button onclick="changeLanguage('en')" class="mr-2 text-gray-600 hover:text-blue-500">🇬🇧 EN</button>
+                        <button onclick="changeLanguage('hi')" class="text-gray-600 hover:text-blue-500">🇮🇳 HI</button>
+                    </div>
+
+                    
+                    <div class="nav-item"><a class="nav-link" href="{% url 'explore_schemes' %}">Explore Schemes</a></div>
+                    {% if user.is_authenticated %}
+                        {% if user.user_type == 'employer' %}
+                            <a href="{% url 'post_job' %}" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600" data-translate="post_job">Post Job</a>
+                            <a href="{% url 'my_jobs' %}" class="py-2 px-4 bg-gray-200 rounded hover:bg-gray-300" data-translate="my_jobs">My Jobs</a>
+                        {% endif %}
+                        {% if user.user_type == 'jobseeker' %}
+                            <a href="{% url 'my_applications' %}" class="py-2 px-4 bg-gray-200 rounded hover:bg-gray-300" data-translate="my_applications">My Applications</a>
+                        {% endif %}
+                        <form method="post" action="{% url 'logout' %}" class="inline">
+                            {% csrf_token %}
+                            <button type="submit" class="py-2 px-4 bg-gray-200 rounded hover:bg-gray-300" data-translate="logout">Logout</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="py-2 px-4 bg-gray-200 rounded hover:bg-gray-300" data-translate="login">Login</a>
+                        <a href="{% url 'register' %}" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600" data-translate="register">Register</a>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-4 px-4 flex-grow">
+        {% if messages %}
+            <div class="space-y-2 mb-4">
+                {% for message in messages %}
+                    <div class="
+                        {% if message.tags == 'success' %}bg-green-100 border-l-4 border-green-500 text-green-700
+                        {% elif message.tags == 'error' %}bg-red-100 border-l-4 border-red-500 text-red-700
+                        {% else %}bg-blue-100 border-l-4 border-blue-500 text-blue-700
+                        {% endif %}
+                        p-4" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% block content %}{% endblock %}
+    </main>
+<!-- Add this just before the closing </body> tag -->
+<div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <button id="chatbot-toggle" style="
+        background-color: #007bff; 
+        color: white; 
+        border: none; 
+        border-radius: 50%; 
+        width: 60px; 
+        height: 60px; 
+        font-size: 24px; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    ">
+        <i class="fas fa-comment"></i>
+    </button>
+
+    <iframe id="chatbot-iframe" 
+        src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/24/08/20250124081809-YJLNJ8RN.json"
+        style="
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 400px;
+            height: 600px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        ">
+    </iframe>
+</div>
+
+<script>
+document.getElementById('chatbot-toggle').addEventListener('click', function() {
+    var iframe = document.getElementById('chatbot-iframe');
+    if (iframe.style.display === 'none' || iframe.style.display === '') {
+        iframe.style.display = 'block';
+    } else {
+        iframe.style.display = 'none';
+    }
+});
+</script>
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container mx-auto px-4 text-center text-gray-600">
+            <p data-translate="copyright">© 2024 Rural Job Portal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

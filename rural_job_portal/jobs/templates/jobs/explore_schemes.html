@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Header Section -->
+<header>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a href="index.html" class="d-flex align-items-center">
+                <img src="https://img.freepik.com/premium-vector/india-gate-sketch-inside-logo_597133-2295.jpg?w=740"
+                    alt="Gov Logo" style="height: 60px; margin-right: 10px;">
+                <span style="font-size: 24px; font-weight: bold; color: hsl(241, 41%, 38%);"></span>
+            </a>
+            <a class="navbar-brand" href="#">Uplift Rural</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#schemes">Schemes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Empowering Rural India</h1>
+    <p>Explore government schemes designed to uplift rural communities and improve livelihoods.</p>
+    <a href="#schemes" class="btn-hero">Learn More</a>
+</section>
+
+<!-- Featured Schemes Section -->
+<section class="schemes py-5" id="schemes">
+    <div class="container">
+        <h2 class="text-center mb-5">Featured Schemes</h2>
+        <div class="row g-4">
+            <!-- Scheme Card 1 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://img.freepik.com/premium-photo/young-indian-farmer-holding-green-chilly-hand-agriculture-field_75648-3572.jpg?w=996"
+                        class="card-img-top" alt="Fasal Bima">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Pradhan Mantri Fasal Bima Yojana</h5>
+                        <p class="card-text">Crop insurance scheme to protect farmers against losses.</p>
+                        <a href="https://www.pmfby.gov.in/" class="btn btn-gradient px-4 py-2" target="_blank">Learn
+                            More</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- Scheme Card 2 -->
+             <!-- Scheme Card 2 -->
+             <div class="col-md-4">
+                <div class="card">
+                    <img src="https://img.freepik.com/premium-photo/indian-farmer-finds-water-borewell-brings-happiness-hope_1168123-62121.jpg?w=996"
+                        class="card-img-top" alt="Krishi Sinchai">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Pradhan Mantri Krishi Sinchai Yojana</h5>
+                        <p class="card-text">Focused on providing irrigation to every field.</p>
+                        <a href="https://pmksy.gov.in/" class="btn btn-gradient px-4 py-2" target="_blank">Learn
+                            More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Scheme Card 3 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://img.freepik.com/premium-photo/young-indian-farmer-showing-debit-credit-card-his-farm_54391-5483.jpg?w=996"
+                        class="card-img-top" alt="Soil Health">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Soil Health Card Scheme</h5>
+                        <p class="card-text">Helps farmers analyze the quality of their soil.</p>
+                        <a href="https://www.soilhealth.dac.gov.in/" class="btn btn-gradient px-4 py-2"
+                            target="_blank">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer id="contact" style="background-color: #003366; color: #e0e0e0; padding: 40px 0; text-align: center;">
+    <div class="container">
+        <h3 style="font-size: 2rem; font-weight: bold; color: #fff;">Uplift Rural</h3>
+        <p style="font-size: 1.2rem; color: #b0c4de;">Powered by Digital India Corporation (DIC)</p>
+        <p style="font-size: 1.2rem; color: #b0c4de;">Government of India Initiative</p>
+        <p>
+            <i class="fas fa-phone" style="color: #ffcc00;"></i> 
+            <a href="tel:+91 7300588903" style="color: #ffcc00; text-decoration: none;">+91 7300588903</a>
+        </p>
+        <p>
+            <i class="fas fa-envelope" style="color: #ffcc00;"></i> 
+            <a href="mailto:support@upliftrural.gov.in" style="color: #ffcc00; text-decoration: none;">support@upliftrural.gov.in</a>
+        </p>
+        
+        <div class="social-icons" style="margin-top: 20px;">
+            <a href="https://www.facebook.com" target="_blank" style="font-size: 1.5rem; margin-right: 15px; color: #fff; transition: all 0.3s ease;">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank" style="font-size: 1.5rem; margin-right: 15px; color: #fff; transition: all 0.3s ease;">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" style="font-size: 1.5rem; margin-right: 15px; color: #fff; transition: all 0.3s ease;">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 1rem; color: #b0c4de;">&copy; 2025 Uplift Rural. All Rights Reserved.</p>
+    </div>
+</footer>
+{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    /* Copy the CSS from the original document here */
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+    }
+
+    header {
+        background: linear-gradient(90deg, #4B0082, #2ACFCF);
+        color: white;
+        padding: 20px 0;
+    }
+
+    header .navbar-brand {
+        font-weight: bold;
+        font-size: 1.8rem;
+    }
+
+    header .navbar-nav .nav-link {
+        color: white;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+
+    header .navbar-nav .nav-link:hover {
+        color: #FFD700;
+    }
+
+    .hero {
+        background: url('https://images.pexels.com/photos/693776/pexels-photo-693776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+
+    .btn-hero {
+        background: #FFD700;
+        color: #4B0082;
+        padding: 10px 25px;
+        font-size: 1.2rem;
+        border-radius: 50px;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .btn-hero:hover {
+        background: #4B0082;
+        color: white;
+    }
+
+    .schemes h2 {
+        font-size: 2.5rem;
+        color: #4B0082;
+        font-weight: bold;
+    }
+
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: #ffffff;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+        color: #2ACFCF;
+    }
+
+    .btn-gradient {
+        background: linear-gradient(90deg, #4B0082, #2ACFCF);
+        color: white;
+        border-radius: 50px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-gradient:hover {
+        background: linear-gradient(90deg, #2ACFCF, #4B0082);
+        transform: scale(1.05);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
